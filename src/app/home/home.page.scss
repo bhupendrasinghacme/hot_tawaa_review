@@ -1,0 +1,33 @@
+.review_app_heading {
+  display: flex;
+  width: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.smily_cls_wrapper {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.smily_face_cls_all {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.smily_face_cls {
+  width: 40%;
+
+}
+.close-icon{
+  text-align: right;
+  float: right;
+  width: 20px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 50%;
+  padding: 5PX;
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="food_review_cls">
+    <h5>How was the food ?</h5>
+    <div class="review_for_food">
+      <ion-icon name="star" *ngFor="let num of [1,2,3,4,5]" (click)="rate(num,'review')"
+        [ngStyle]="{'color':getColor(num)}">
+      </ion-icon>
+    </div>
+  </div>
+  <div class="food_review_cls">
+    <h5>How was the Services ?</h5>
+    <div class="review_for_service">
+      <ion-icon name="star" *ngFor="let num of [1,2,3,4,5]" (click)="rate(num, 'service')"
+        [ngStyle]="{'color':getColor2(num)}">
+      </ion-icon>
+    </div>
+  </div>
+  <div class="star_review_btn">
+    <ion-button [routerLink]="['/', 'user-form', rating,rating2]" expand="block" [disabled]="false" color="danger">
+      Submit</ion-button>
+  </div>
+
+</ion-content>
