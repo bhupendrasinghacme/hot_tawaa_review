@@ -1,4 +1,7 @@
 <ion-content>
+  <div class="remove-btn-cls">
+    <ion-icon name="close-outline" class="close-icon" routerLink="/reviews"></ion-icon>
+  </div>
   <ion-list [inset]="true">
     <form [formGroup]="bookingForm" (ngSubmit)="submitUserReview()" novalidate>
       <ion-item lines="none">
@@ -28,10 +31,10 @@
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">
         Only numerical values allowed.
       </span>
-      <div>
-        <ion-button type="submit" shape="full" expand="block" color="danger">Submit</ion-button>
-      </div>
     </form>
   </ion-list>
-
+  <div class="footer-item">
+    <ion-button type="submit" shape="full" expand="block" color="danger" (click)="submitUserReview()">Submit
+    </ion-button>
+  </div>
 </ion-content>

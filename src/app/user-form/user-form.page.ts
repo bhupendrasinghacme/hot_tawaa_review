@@ -46,9 +46,9 @@ export class UserFormPage implements OnInit {
   submitUserReview() {
     this.isSubmitted = true;
     if (!this.bookingForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     }
+
     this.bookingForm.value['rewiew_star'] = this.review_star;
     this.bookingForm.value['service_star'] = this.service_star;
 
@@ -60,11 +60,14 @@ export class UserFormPage implements OnInit {
         this.id = ref.docs.map(doc => doc.id);
         let results = ref.docs.map(doc => doc.data());
         if (results.length > 0) {
-          // console.log(this.db.collection('user_review_data'));
-          // this.db.collection('user_review_data').doc(this.id).update(data)
-          // .then(() => {
-          this.router.navigate(['/thankyou']);
-          // }).catch(error => console.log(error));
+          this.db.collection("user_review_data")
+            .doc<any>(`${this.id}`)
+            .delete()
+            .then(() => {
+              this.itemDoc.add(data).then(() => {
+                this.router.navigate(['/thankyou']);
+              });
+            }).catch(error => console.log(error));
         }
         else {
           this.itemDoc.add(data).then(itm => {

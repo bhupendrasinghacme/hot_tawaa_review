@@ -24,3 +24,21 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.remove-btn-cls {
+    position: relative;
+    height: 50px;
+}
+
+.close-icon {
+    width: 17px;
+    height: 17px;
+    background: #ddd;
+    border-radius: 50%;
+    padding: 5PX;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}

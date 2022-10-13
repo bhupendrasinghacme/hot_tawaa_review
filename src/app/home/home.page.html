@@ -1,5 +1,8 @@
 <ion-content [fullscreen]="true">
-  <ion-icon name="close-outline" class="close-icon"></ion-icon>
+  <div class="remove-btn-cls">
+    <ion-icon name="close-outline" class="close-icon" (click)="backButtonHome()"></ion-icon>
+  </div>
+
   <div class="review_app_heading">
     <h1>Review App/ Feedback</h1>
   </div>
@@ -16,7 +19,7 @@
   <div class="smily_cls_wrapper">
     <div class="smily_face_cls_all">
       <div class="space-left"></div>
-      <div class="smily_face_cls">
+      <div class="smily_face_cls" [routerLink]="['/reviews']">
         <img src="../../assets/sad face-01.png" alt="sad">
       </div>
       <div class="space-right"></div>
