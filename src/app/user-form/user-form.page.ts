@@ -70,7 +70,7 @@ export class UserFormPage implements OnInit {
 
           if (this.bookingForm.value.name == "") {
             this.bookingForm.value.name = `Customer ${docs_data.docs.length + 1}`;
-            this.bookingForm.value.email = `Customer ${docs_data.docs.length + 1}@gmail.com`;
+            this.bookingForm.value.email = "Customer" + `${docs_data.docs.length + 1}@gmail.com`;
           }
 
           if (this.bookingForm.value.email == "") {
