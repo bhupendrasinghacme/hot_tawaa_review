@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package io.hot.tawaa;
 
 import com.getcapacitor.BridgeActivity;
 

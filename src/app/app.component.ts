@@ -20,7 +20,7 @@ export class AppComponent {
     this.platform.backButton.subscribeWithPriority(10, () => {
       const path = window.location.pathname;
       console.log(path)
-      if (path === '/tabs/home') {
+      if (path === '/home') {
         navigator['app'].exitApp();
       } else {
         this._location.back();

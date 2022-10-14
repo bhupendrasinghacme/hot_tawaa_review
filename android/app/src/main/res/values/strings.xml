@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">ionic-app-base</string>
-    <string name="title_activity_main">ionic-app-base</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">Hot Tawaa</string>
+    <string name="title_activity_main">Hot Tawaa</string>
+    <string name="package_name">io.hot.tawaa</string>
+    <string name="custom_url_scheme">io.hot.tawaa</string>
 </resources>
