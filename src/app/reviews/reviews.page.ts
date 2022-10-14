@@ -81,7 +81,6 @@ export class ReviewsPage implements OnInit {
 
   // submitReview() {
   //   if (this.rating > 0 && this.rating2 > 0) {
-
   //     this.router.navigate(['/user-form'], { queryParams: { review: this.rating, service: this.rating2 } });
   //   }
   // }

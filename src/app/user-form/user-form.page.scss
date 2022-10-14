@@ -1,9 +1,26 @@
 ion-item {
-    --color-activated: #fff;
+
+    // --color-activated: #fff;
+    ion-input {
+        --padding-start: 10px;
+        --padding-end: 10px;
+        border: 2px solid rgb(165, 153, 153);
+        border-radius: 6px;
+        line-height: 30px;
+    }
 }
 
-ion-input {
-    border: 2px solid rgb(165, 153, 153);
-    border-radius: 6px;
-    line-height: 30px;
+.error {
+    color: red;
+    padding: 10px;
+}
+
+.footer-item {
+    margin-top: 50px;
+    width: 339px;
+}
+
+.list-md.list-inset ion-item:first-child {
+    --border-radius: 0 0 0 0;
+    --border-width: 0 0 0 0;
 }

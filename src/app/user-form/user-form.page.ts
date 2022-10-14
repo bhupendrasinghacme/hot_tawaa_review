@@ -14,6 +14,8 @@ export class UserFormPage implements OnInit {
   review_star: any;
   service_star: any;
   id: any;
+  length_docs: any = 0;
+  submit_checker: boolean = true;
   private itemDoc: AngularFirestoreCollection<any>;
   isSubmitted: boolean = false;
   constructor(
@@ -31,51 +33,79 @@ export class UserFormPage implements OnInit {
   ngOnInit() {
     this.itemDoc = this.db.collection<any>('user_review_data', ref => ref.orderBy('createdAt'));
     this.bookingForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+      name: [''],
+      // , [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]
+      email: [''],
+      // , [Validators.required, Validators.pattern('^[0-9]+$')]
+      mobile: ['']
     })
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  get errorControl() {
-    return this.bookingForm.controls;
-  }
+  // get errorControl() {
+  //   return this.bookingForm.controls;
+  // }
   submitUserReview() {
-    this.isSubmitted = true;
-    if (!this.bookingForm.valid) {
-      return false;
-    }
+    this.submit_checker = false;
+    // if (!this.bookingForm.valid) {
+    //   return false;
+    // }
 
-    this.bookingForm.value['rewiew_star'] = this.review_star;
-    this.bookingForm.value['service_star'] = this.service_star;
+    this.bookingForm.value['rewiew_star'] = this.review_star != "undefined" ? this.review_star : 0;
+    this.bookingForm.value['service_star'] = this.service_star != "undefined" ? this.service_star : 0;
 
-    if (this.bookingForm.value.name != "" && this.bookingForm.value.email != "" && this.bookingForm.value.phone != "") {
-      let data = this.bookingForm.value;
-      let check_data = this.db.collection('user_review_data').ref.where('email', '==', this.bookingForm.value.email).get();
-      check_data.then((ref) => {
+    let data = this.bookingForm.value;
+    let check_data = this.db.collection('user_review_data').ref.where('email', '==', this.bookingForm.value.email).get();
+    check_data.then(async (ref) => {
 
-        this.id = ref.docs.map(doc => doc.id);
-        let results = ref.docs.map(doc => doc.data());
-        if (results.length > 0) {
-          this.db.collection("user_review_data")
-            .doc<any>(`${this.id}`)
-            .delete()
-            .then(() => {
-              this.itemDoc.add(data).then(() => {
-                this.router.navigate(['/thankyou']);
+      this.id = await ref.docs.map(doc => doc.id);
+      let results = await ref.docs.map(doc => doc.data());
+
+      this.db
+        .collection("user_review_data")
+        .get()
+        .subscribe((docs_data) => {
+
+          if (this.bookingForm.value.name == "") {
+            this.bookingForm.value.name = `Customer ${docs_data.docs.length + 1}`;
+            this.bookingForm.value.email = `Customer ${docs_data.docs.length + 1}@gmail.com`;
+          }
+
+          if (this.bookingForm.value.email == "") {
+            this.bookingForm.value.email = "";
+          }
+
+          if (this.bookingForm.value.phone == "") {
+            this.bookingForm.value.phone = "";
+          }
+
+          if (results != undefined && results.length > 0) {
+            this.db.collection("user_review_data")
+              .doc<any>(`${this.id}`)
+              .delete()
+              .then(() => {
+                this.itemDoc.add(data).then(() => {
+                  this.submit_checker = true;
+                  this.router.navigate(['/thankyou']);
+                });
+
+              }).catch(error => {
+                this.submit_checker = true;
+                console.log(error)
               });
-            }).catch(error => console.log(error));
-        }
-        else {
-          this.itemDoc.add(data).then(itm => {
-            this.router.navigate(['/thankyou']);
-          });
-        }
-      });
-    }
+          }
+          else {
+
+            this.itemDoc.add(data).then(() => {
+              this.submit_checker = true;
+              this.router.navigate(['/thankyou']);
+            });
+          }
+        });
+    });
+
   }
 
 }

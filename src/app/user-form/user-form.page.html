@@ -1,40 +1,50 @@
 <ion-content>
   <div class="remove-btn-cls">
-    <ion-icon name="close-outline" class="close-icon" routerLink="/reviews"></ion-icon>
+    <ion-icon name="chevron-back-outline" class="close-icon" routerLink="/reviews"></ion-icon>
   </div>
-  <ion-list [inset]="true">
+  <ion-list [inset]="true" lines="none">
     <form [formGroup]="bookingForm" (ngSubmit)="submitUserReview()" novalidate>
       <ion-item lines="none">
-        <ion-label position="stacked">Name *</ion-label><br>
+        <ion-label position="stacked">Name </ion-label><br>
         <ion-input class="input_box" formControlName="name" required></ion-input>
       </ion-item>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+      <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
         Name is required.
-      </span>
+      </span> -->
       <ion-item lines="none">
-        <ion-label position="stacked">Email *</ion-label><br>
+        <ion-label position="stacked">Email </ion-label><br>
         <ion-input class="input_box" formControlName="email" required></ion-input>
       </ion-item>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+      <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
         Email is required.
       </span>
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
         Please provide valid email id.
-      </span>
+      </span> -->
       <ion-item lines="none">
-        <ion-label position="stacked">Phone *</ion-label><br>
+        <ion-label position="stacked">Phone </ion-label><br>
         <ion-input class="input_box" formControlName="mobile" required></ion-input>
       </ion-item>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
+      <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
         Mobile number is required.
       </span>
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">
         Only numerical values allowed.
-      </span>
+      </span> -->
+      <div class="footer-item">
+        <ion-button type="submit" shape="full" expand="block" color="danger" (click)="submitUserReview()"
+          *ngIf="submit_checker; else elseSubmitBTN">
+          Submit
+        </ion-button>
+        <ng-template #elseSubmitBTN>
+          <ion-button shape="full" expand="block" color="danger">
+            <ion-spinner name="dots"></ion-spinner>
+          </ion-button>
+        </ng-template>
+      </div>
     </form>
+
   </ion-list>
-  <div class="footer-item">
-    <ion-button type="submit" shape="full" expand="block" color="danger" (click)="submitUserReview()">Submit
-    </ion-button>
-  </div>
+
+
 </ion-content>

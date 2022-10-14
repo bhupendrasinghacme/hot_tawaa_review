@@ -1,6 +1,6 @@
 <ion-content>
   <div class="remove-btn-cls">
-    <ion-icon name="close-outline" class="close-icon" routerLink="/"></ion-icon>
+    <ion-icon name="chevron-back-outline" class="close-icon" routerLink="/"></ion-icon>
   </div>
   <div class="food_review_cls">
     <h5>How was the food ?</h5>
@@ -19,8 +19,9 @@
     </div>
   </div>
   <div class="star_review_btn">
-    <ion-button [routerLink]="['/', 'user-form', rating,rating2]" expand="block" [disabled]="false" color="danger">
-      Submit</ion-button>
+    <ion-button expand="block" [disabled]="false" color="danger" [routerLink]="['/', 'user-form', rating,rating2]">
+      Submit
+    </ion-button>
   </div>
 
 </ion-content>
