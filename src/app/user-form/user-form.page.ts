@@ -52,9 +52,11 @@ export class UserFormPage implements OnInit {
     // if (!this.bookingForm.valid) {
     //   return false;
     // }
-
+    let myDate = new Date();
+    let myDateTemp = new Date(myDate);
     this.bookingForm.value['rewiew_star'] = this.review_star != "undefined" ? this.review_star : 0;
     this.bookingForm.value['service_star'] = this.service_star != "undefined" ? this.service_star : 0;
+    this.bookingForm.value['createdAt'] = myDateTemp;
 
     let data = this.bookingForm.value;
     let check_data = this.db.collection('user_review_data').ref.where('email', '==', this.bookingForm.value.email).get();

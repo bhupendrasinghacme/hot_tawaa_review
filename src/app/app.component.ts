@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, IonRouterOutlet, MenuController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { Location } from '@angular/common';
 
 

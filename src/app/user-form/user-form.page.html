@@ -6,14 +6,14 @@
     <form [formGroup]="bookingForm" (ngSubmit)="submitUserReview()" novalidate>
       <ion-item lines="none">
         <ion-label position="stacked">Name </ion-label><br>
-        <ion-input class="input_box" formControlName="name" required></ion-input>
+        <ion-input class="input_box" formControlName="name"></ion-input>
       </ion-item>
       <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
         Name is required.
       </span> -->
       <ion-item lines="none">
         <ion-label position="stacked">Email </ion-label><br>
-        <ion-input class="input_box" formControlName="email" required></ion-input>
+        <ion-input class="input_box" formControlName="email"></ion-input>
       </ion-item>
       <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
         Email is required.
@@ -23,7 +23,7 @@
       </span> -->
       <ion-item lines="none">
         <ion-label position="stacked">Phone </ion-label><br>
-        <ion-input class="input_box" formControlName="mobile" required></ion-input>
+        <ion-input class="input_box" formControlName="mobile"></ion-input>
       </ion-item>
       <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
         Mobile number is required.
